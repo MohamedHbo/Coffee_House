@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cof3e_House</title>
+    <style>
+        .mn {
+            width: 310px;
+            height: 30px;
+            border-radius: 6px;
+            padding: 8px;
+        }
+        .mk {
+            background-color: aliceblue;
+            width: 350px;
+            height: 550px;
+            margin-left: 980px;
+            margin-bottom: 900px;
+        }
+        .h {
+            width: 600px;
+            height: 2px;
+            margin-bottom: 50px;
+        }
+        .mnk {
+            position: fixed;
+            opacity: 1px;
+        }
+        .page {
+            height: 100vh;
+        }
+        .page::before {
+            content: "";
+            position: fixed;
+            width: 270%;
+            height: 190%;
+            background-color: #0075ff;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) skew(0, -10deg);
+            border-radius: 50%;
+            z-index: -1;
+            animation: waving 3s ease-in-out infinite alternate;
+        }
+        @keyframes waving {
+            from {
+                transform: translateX(-50%) skew(0, -10deg);
+            }
+            to {
+                transform: translateX(-30%) skew(10deg, 0);
+            }
+        }
+    </style>
+    <link href="assets/img/22.png" rel="icon">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <h1 style="margin-right: 1050px; font-size: 50px; background-color: blue; border-radius: 10px; color: antiquewhite;">Cof3e_House</h1>
+    <div class="page">
+        <div class="h">
+            <h2 style="font-size: 22px;">Your Name</h2>
+            <input class="mn" id="nameInput" placeholder="Enter Your Name">
+            <h2 style="font-size: 22px;">Order date</h2>
+            <input class="mn" id="dateInput" readonly>
+            <h3 style="font-size: 22px;">Quantity</h3>
+            <input class="mn" id="quantityInput" placeholder="Enter Quantity">
+        </div>
+        <button onclick="validateForm()" style="background-color: blue; width: 150px; height: 40px;  border-radius: 8px;margin-top: 300px;">Submit</button>
+    </div>
+
+    <script>
+        function setDate() {
+            const dateInput = document.getElementById('dateInput');
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('ar-EG', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            dateInput.value = formattedDate;
+        }
+
+        function validateForm() {
+            const nameInput = document.getElementById('nameInput').value;
+            const quantityInput = document.getElementById('quantityInput').value;
+
+            if (nameInput === "" || quantityInput === "") {
+                alert("Please fill in all fields.");
+            } else {
+                window.location.href = "mohamedcafe.html";
+            }
+        }
+
+        window.onload = setDate;
+    </script>
+</body>
+</html>
